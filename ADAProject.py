@@ -20,8 +20,7 @@ from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import SMOTE
-import streamlit as st
-import pickle
+
 
 
 # In[2]:
@@ -597,25 +596,6 @@ print("Classification Report:")
 print(class_report)
 
 
-# In[52]:
-
-
-# streamlit
-model_filename = "logistic_model.pkl"
-with open(model_filename, "wb") as file:
-    pickle.dump(logreg, file)
-
-st.title("Logistic Regression Model for Bank Marketing")
-st.write("Train and download the logistic regression model")
-st.write("Training Accuracy:", logreg.score(X_train, y_train))
-st.write("Testing Accuracy:", logreg.score(X_test, y_test))
-with open(model_filename, "rb") as file:
-    st.download_button(
-        label="Download Logistic Regression Model",
-        data=file,
-        file_name="logistic_model.pkl",
-        mime="application/octet-stream"
-    )
 
 
 # In[53]:
