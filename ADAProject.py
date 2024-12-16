@@ -27,7 +27,7 @@ from imblearn.over_sampling import SMOTE
 
 
 # Read the dataset with the correct delimiter
-df = pd.read_csv(r'C:\Users\Halil\Desktop\projectcsv\bank-additional.csv', delimiter=';')
+df = pd.read_csv(r'bank-additional.csv', delimiter=';')
 df.head()
 
 
