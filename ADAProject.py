@@ -20,7 +20,7 @@ from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import SMOTE
-
+import pickle
 
 
 # In[2]:
