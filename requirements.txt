@@ -1,0 +1,9 @@
+ucimlrepo
+pandas
+numpy
+seaborn
+matplotlib
+sklearn
+imblearn
+streamlit 
+pickle
