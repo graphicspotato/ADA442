@@ -5,5 +5,3 @@ seaborn
 matplotlib
 scikit-learn
 imblearn
-streamlit 
-pickle
