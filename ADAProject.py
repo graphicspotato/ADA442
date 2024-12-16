@@ -21,6 +21,7 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import SMOTE
 import pickle
+import streamlit as st
 
 
 # In[2]:
