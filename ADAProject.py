@@ -114,6 +114,10 @@ elif page == "Data Visualization":
     duplicates = data.duplicated()
     st.write(f"Number of duplicate rows: {duplicates.sum()}")
 
+        # Strip leading/trailing spaces from column names
+    data.columns = data.columns.str.strip()
+
+    # Now you should be able to access the 'age' column
     st.write(data['age'])
 
     # st.write("### Distribution of Age")
