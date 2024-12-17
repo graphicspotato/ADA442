@@ -23,7 +23,7 @@ def load_model():
     with st.spinner("Loading model..."):
         return joblib.load(model_path)
 
-@st.cache_resource()
+@st.cache_data()
 def load_data():
     return pd.read_csv(data_path, delimiter=';')
 
@@ -68,8 +68,8 @@ feature_info = """
 """
 
 # Upload trained model 
-model = joblib.load(model_path)
-data = pd.read_csv(data_path)
+# model = joblib.load(model_path)
+# data = pd.read_csv(data_path)
 
 # Page selection using sidebar
 st.sidebar.title("Page Navigator")
