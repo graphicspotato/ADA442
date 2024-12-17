@@ -25,7 +25,7 @@ def load_model():
 
 @st.cache_data()
 def load_data():
-    return pd.read_csv(data_path)
+    return pd.read_csv(data_path, delimiter=';')
 
 @st.cache_data()
 def load_animation_m():
