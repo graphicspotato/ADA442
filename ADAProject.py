@@ -96,7 +96,7 @@ elif page == "Data Visualization":
     st.write(data.head(num_rows))
     st.write(feature_info)
     st.subheader("Null Values in Each Column")
-    null_values = df.isnull().sum()
+    null_values = data.isnull().sum()
     # Display null values as a table
     st.write(null_values)
 
