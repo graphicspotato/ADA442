@@ -114,6 +114,11 @@ elif page == "Data Visualization":
     duplicates = data.duplicated()
     st.write(f"Number of duplicate rows: {duplicates.sum()}")
 
+    st.write("### Distribution of Age")
+    fig, ax = plt.subplots()
+    sns.histplot(data['age'], bins=30, kde=True, ax=ax)
+    st.pyplot(fig)
+
     st.subheader("Job Distribution Graph")
     fig, ax = plt.subplots()
     sns.countplot(data['job'], ax=ax)
