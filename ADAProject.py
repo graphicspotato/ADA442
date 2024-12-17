@@ -108,7 +108,7 @@ elif page == "Data Visualization":
 
     st.subheader("Job Distribution Graph")
     fig, ax = plt.subplots()
-    sns.countplot(data['job'], ax=ax)
+    sns.countplot(data["job"], ax=ax)
     plt.xticks(rotation=45)
     st.pyplot(fig)
     
