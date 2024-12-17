@@ -8,7 +8,7 @@ import json
 import os
 
 current_dir = os.path.dirname(__file__)
-#hello_json_path = os.path.join(current_dir, 'hello.json')
+hello_json_path = os.path.join(current_dir, 'hello.json')
 machine_json_path = os.path.join(current_dir, 'machine.json')
 model_path = os.path.join(current_dir, 'LOGREG_model.pkl')
 data_path = os.path.join(current_dir, 'bank-additional.csv')
@@ -35,8 +35,6 @@ def load_animation_m():
 lottie_animation_machine = load_animation_m()
 model = load_model()
 data = load_data()
-
-data.columns = data.columns.str.strip().str.replace('"', '')  # Clean column names
 
 feature_info = """
 ### Feature Information:
