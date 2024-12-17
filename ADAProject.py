@@ -23,11 +23,11 @@ def load_model():
     with st.spinner("Loading model..."):
         return joblib.load(model_path)
 
-@st.cache_data(allow_output_mutation=True)
+@st.cache_data()
 def load_data():
     return pd.read_csv(data_path)
 
-@st.cache_data(allow_output_mutation=True)
+@st.cache_data()
 def load_animation_m():
     return load_lottie_file(machine_json_path)
 
