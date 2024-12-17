@@ -130,6 +130,14 @@ elif page == "Data Visualization":
     sns.countplot(data['marital'], ax=ax)
     st.pyplot(fig)
     
+    st.subheader("Correlation Graph")
+    fig, ax = plt.subplots(figsize=(12, 8))  
+    numerical_data = data.select_dtypes(include=['float64', 'int64']) 
+    corr = numerical_data.corr()
+    sns.heatmap(corr, annot=True, cmap='coolwarm', ax=ax)
+    st.pyplot(fig)
+    
+    
     # st.write("""
     #     Welcome to the 'Data Visualization' page. This page is dedicated to the Bank Marketing Data Set used in training our model. Here, you can explore the dataset and examine all the features and data within it. Furthermore, you can also explore various graphical representations of these features.
     # """)
