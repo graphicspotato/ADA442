@@ -64,7 +64,7 @@ feature_info = """
 
 # Upload trained model 
 model = joblib.load(model_path)
-data= pd.read_csv(data_path)
+data = pd.read_csv(data_path)
 
 # Page selection using sidebar
 st.sidebar.title("Page Navigator")
@@ -97,8 +97,14 @@ elif page == "Data Visualization":
     st.write(feature_info)
     st.subheader("Null Values in Each Column")
     null_values = data.isnull().sum()
+    
     # Display null values as a table
     st.write(null_values)
+    
+    # Check if there are any duplicates
+    st.subheader("Duplicates")
+    duplicates = data.duplicated()
+    st.write(f"Number of duplicate rows: {duplicates.sum()}")
 
     
     
