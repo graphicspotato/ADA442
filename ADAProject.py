@@ -136,9 +136,9 @@ elif page == "Data Visualization":
     corr = numerical_data.corr()
     sns.heatmap(corr, annot=True, cmap='coolwarm', ax=ax)
     st.pyplot(fig)
-elif page == "Data Prerocessing":
-    st.title("Data Prerocessing")
-    st.write("On this page we will do the appropriate data processing to make our model's life easier.")
+elif page == "Data Preproocessing":
+    st.title("Data Preprocessing")
+    st.write("On this page we will do the appropriate data preprocessing to make our model's life easier.")
     
     
     # st.write("""
