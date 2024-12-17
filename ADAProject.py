@@ -79,6 +79,9 @@ if page == "Home":
             based on various features. Use the sidebar to navigate to the prediction page 
             and input the required features to get a prediction.
         """)
+    with col2:
+        st_lottie(lottie_animation_hello, height=300, key="coding")
+
 elif page == "Data Exploration":
     st.title("Let's Explore Our Dataset")
     st.write("The data is related with direct marketing campaigns (phone calls) of a Portuguese banking institution. The classification goal is to predict if the client will subscribe a term deposit (variable y).")
