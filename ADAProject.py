@@ -106,7 +106,11 @@ elif page == "Data Visualization":
     duplicates = data.duplicated()
     st.write(f"Number of duplicate rows: {duplicates.sum()}")
 
-    
+    st.subheader("Job Distribution Graph")
+    fig, ax = plt.subplots()
+    sns.countplot(data['job'], ax=ax)
+    plt.xticks(rotation=45)
+    st.pyplot(fig)
     
     
     # st.write("""
