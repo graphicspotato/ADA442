@@ -68,7 +68,7 @@ data= pd.read_csv(data_path)
 
 # Page selection using sidebar
 st.sidebar.title("Page Navigator")
-page = st.sidebar.selectbox("Choose a page", ["Home", "Data Visualization", "Machine Learning Prediction Model","Feedback"])
+page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Processing","Data Visualization", "Machine Learning Prediction Model","Feedback"])
 
 if page == "Home":
    st.title("Welcome to the Bank Marketing Campaign Prediction App")
@@ -79,8 +79,65 @@ if page == "Home":
             based on various features. Use the sidebar to navigate to the prediction page 
             and input the required features to get a prediction.
         """)
+elif page == "Data Exploration":
+    st.title("About Our Dataset")
+    st.write("The data is related with direct marketing campaigns (phone calls) of a Portuguese banking institution. The classification goal is to predict if the client will subscribe a term deposit (variable y).")
+    st.write("Additional Information:")
+    st.write(" The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.")
+    st.write("There are four datasets which can be used but our work based on bank-additional.csv with 10% of the examples (4119), randomly selected from 1), and 20 inputs.")
+    st.write("Luckily We don't have any missing values in our dataset so it seems there is no need to data imputation.")
     
-    #user_name = st.text_input("Can you enter your name here so I can address you?")
-    #if user_name:
-    #    st.write(f"Hello, {user_name}! Welcome to the app.")
-    #    st.write("You can go to the navigation bar to explore the project we have created. Let's continue!")
+
+    
+    
+    
+    # st.write("""
+    #     Welcome to the 'Data Visualization' page. This page is dedicated to the Bank Marketing Data Set used in training our model. Here, you can explore the dataset and examine all the features and data within it. Furthermore, you can also explore various graphical representations of these features.
+    # """)
+    # num_rows = st.number_input("Select number of rows to view", min_value=5, max_value=50, value=10)
+    #  # Show the first few rows of the data set
+    # st.write(f"Here is a preview of the first {num_rows} rows of the dataset:")
+    # st.write(data.head(num_rows))
+    # st.write(feature_info)
+
+    # # Data Visualization part for our dataset
+    # st.write("### Distribution of Age")
+    # fig, ax = plt.subplots()
+    # sns.histplot(data['age'], bins=30, kde=True, ax=ax)
+    # st.pyplot(fig)
+
+    # st.write("### Job Distribution")
+    # fig, ax = plt.subplots()
+    # sns.countplot(data['job'], ax=ax)
+    # plt.xticks(rotation=45)
+    # st.pyplot(fig)
+
+    # st.write("### Marital Status Distribution")
+    # fig, ax = plt.subplots()
+    # sns.countplot(data['marital'], ax=ax)
+    # st.pyplot(fig)
+
+    # st.write("### Education Level Distribution")
+    # fig, ax = plt.subplots()
+    # sns.countplot(data['education'], ax=ax)
+    # plt.xticks(rotation=45)
+    # st.pyplot(fig)
+
+    # st.write("### Correlation Heatmap")
+    # fig, ax = plt.subplots(figsize=(12, 8))  
+    # numerical_data = data.select_dtypes(include=['float64', 'int64']) 
+    # corr = numerical_data.corr()
+    # sns.heatmap(corr, annot=True, cmap='coolwarm', ax=ax)
+    # st.pyplot(fig)
+
+    # st.write("### Duration vs Age")
+    # fig, ax = plt.subplots()
+    # sns.scatterplot(data=data, x='age', y='duration', ax=ax)
+    # st.pyplot(fig)
+
+    # st.write("### Box Plot of Campaign Outcome by Job Type")
+    # fig, ax = plt.subplots()
+    # sns.boxplot(data=data, x='job', y='duration', ax=ax)
+    # plt.xticks(rotation=45)
+    # st.pyplot(fig)
+    
