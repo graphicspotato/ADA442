@@ -73,7 +73,7 @@ feature_info = """
 
 # Page selection using sidebar
 st.sidebar.title("Page Navigator")
-page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Prerocessing", "Machine Learning Prediction Model","Feedback"])
+page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Preprocessing", "Machine Learning Prediction Model","Feedback"])
 
 if page == "Home":
    st.title("Welcome to the Bank Marketing Campaign Prediction App")
@@ -136,7 +136,7 @@ elif page == "Data Visualization":
     corr = numerical_data.corr()
     sns.heatmap(corr, annot=True, cmap='coolwarm', ax=ax)
     st.pyplot(fig)
-elif page == "Data Preproocessing":
+elif page == "Data Preprocessing":
     st.title("Data Preprocessing")
     st.write("On this page we will do the appropriate data preprocessing to make our model's life easier.")
     
