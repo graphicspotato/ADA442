@@ -114,13 +114,10 @@ elif page == "Data Visualization":
     duplicates = data.duplicated()
     st.write(f"Number of duplicate rows: {duplicates.sum()}")
 
-    # Now you should be able to access the 'age' column
-    st.write(data['age'])
-
-    # st.write("### Distribution of Age")
-    # fig, ax = plt.subplots()
-    # sns.histplot(data['age'], bins=30, kde=True, ax=ax)
-    # st.pyplot(fig)
+    st.write("### Distribution of Age")
+    fig, ax = plt.subplots()
+    sns.histplot(data['age'], bins=30, kde=True, ax=ax)
+    st.pyplot(fig)
 
     # st.subheader("Job Distribution Graph")
     # fig, ax = plt.subplots()
