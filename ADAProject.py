@@ -36,6 +36,8 @@ lottie_animation_machine = load_animation_m()
 model = load_model()
 data = load_data()
 
+data.columns = data.columns.str.strip().str.replace('"', '')  # Clean column names
+
 feature_info = """
 ### Feature Information:
 - **age**: Age of the client.
@@ -107,7 +109,11 @@ elif page == "Data Visualization":
     st.write(f"Number of duplicate rows: {duplicates.sum()}")
 
     st.subheader("Job Distribution Graph")
-    st.write(data.columns)
+    fig, ax = plt.subplots()
+    sns.countplot(data['job'], ax=ax)
+    plt.xticks(rotation=45)
+    st.pyplot(fig)
+    
     
     # st.write("""
     #     Welcome to the 'Data Visualization' page. This page is dedicated to the Bank Marketing Data Set used in training our model. Here, you can explore the dataset and examine all the features and data within it. Furthermore, you can also explore various graphical representations of these features.
