@@ -18,7 +18,7 @@ def load_lottie_file(filepath: str):
     with open(filepath, 'r') as f:
         return json.load(f)
     
-@st.cache_resource(allow_output_mutation=True)
+@st.cache_resource()
 def load_model():
     with st.spinner("Loading model..."):
         return joblib.load(model_path)
