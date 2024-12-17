@@ -23,7 +23,7 @@ def load_model():
     with st.spinner("Loading model..."):
         return joblib.load(model_path)
 
-@st.cache_data()
+@st.cache_resource()
 def load_data():
     return pd.read_csv(data_path, delimiter=';')
 
@@ -113,9 +113,6 @@ elif page == "Data Visualization":
     st.subheader("Duplicates")
     duplicates = data.duplicated()
     st.write(f"Number of duplicate rows: {duplicates.sum()}")
-
-        # Strip leading/trailing spaces from column names
-    data.columns = data.columns.str.strip()
 
     # Now you should be able to access the 'age' column
     st.write(data['age'])
