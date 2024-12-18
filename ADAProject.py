@@ -171,7 +171,7 @@ elif page == "Model Training":
     st.subheader("Data Splitting")
     st.write("In order to prevent over fitting we split the data as training and test data by 8/2 ratio")
 
-    st.subheadear("Plain Models")
+    st.subheader("Plain Models")
     st.write("First we tested how good plain machine learning models.")
     st.write("Logistic regression model achieved %92 accuracy.")
     st.write("Random forest model achieved %90 accuracy.")
