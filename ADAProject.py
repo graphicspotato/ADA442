@@ -176,18 +176,15 @@ elif page == "Model Training":
     st.write("Logistic regression model achieved %92 accuracy.")
     st.write("Random forest model achieved %90 accuracy.")
     st.write("SVM model achieved %91 accuracy.")
-
     st.write("From this point we decided to move on with Logistic regression model")
+
+    st.subheader("Grid Search with Cross Validation")
+    st.write("We used grid search technique with cross validation and found the best hyperparameters as:")
+    st.write("Best Hyperparameters: {'C': 1, 'max_iter': 100, 'penalty': 'l1', 'solver': 'liblinear'}")
+
 
     st.subheader("Feature Eliminating")
     st.write("We search the important features to decide which features have over or under weight which affects our model's training")
-
-    # Get feature importance
-    importance = pd.DataFrame({'Feature': X.columns, 'Coefficient': model.coef_[0]})
-    importance = importance.sort_values(by='Coefficient', ascending=False)
-
-    print("\nFeature Importance:")
-    print(importance)
 
 
     
