@@ -73,7 +73,7 @@ feature_info = """
 
 # Page selection using sidebar
 st.sidebar.title("Page Navigator")
-page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Preprocessing", "Model Training","Machine Learning Prediction Model","Feedback"])
+page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Preprocessing", "Model Training","Logistic Regression Prediction Model","Feedback"])
 
 if page == "Home":
    st.title("Welcome to the Bank Marketing Campaign Prediction App")
@@ -192,6 +192,34 @@ elif page == "Model Training":
     st.subheader("Re-training with found hyperparameters and L1 penalty")
     st.write("So our final model had approximately %90 accuracy and we saved it.")
 
+elif page == "Logistic Regression Prediction Model":
+    st.title("Prediction")
+    with st.expander("Try the model"):
+        st.write("Enter the feature values to make a prediction:")
+        duration = st.number_input("Duration of Last Contact (seconds)", min_value=0, value=0)
+        pdays = st.number_input("Days Since Last Contact", min_value=-1, value=0)
+        emp_var_rate = st.number_input("Employment Variation Rate", value=0.0)
+        euribor3m = st.number_input("Euribor 3 Month Rate", value=0.0)
+        nr_employed = st.number_input("Number of Employees", value=0.0)
+
+        # Features of data set used during training 
+        input_data = {
+            'Duration': duration,
+            'Passed Days Since Last Contact': pdays,
+            'Employment Variation Rate': emp_var_rate,
+            'Euribor 3 Month Rate ': euribor3m,
+            'Numver of Employees': nr_employed,
+        }
+
+        input_df = pd.DataFrame([input_data])
+
+        # Prediction button
+        if st.button("Predict"):
+            prediction = model.predict(input_df)
+            st.write(f"Prediction: {'Yes' if prediction[0] == 1 else 'No'}")
+
+if __name__ == "__main__":
+    st.write("Bank Marketing Campaign Prediction")
 
     
     # st.write("""
