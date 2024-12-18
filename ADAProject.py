@@ -149,7 +149,7 @@ elif page == "Data Preprocessing":
     # Convert categorical columns to 'category' type
     categorical_columns = ['job', 'marital', 'education', 'contact', 'month', 'day_of_week', 'poutcome']
     for col in categorical_columns:
-        df[col] = df[col].astype('category')
+        data[col] = data[col].astype('category')
 
     # Show the processed data
     st.subheader("Processed Data")
