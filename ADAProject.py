@@ -202,46 +202,56 @@ elif page == "Logistic Regression Prediction Model":
     st.title("Prediction")
     with st.expander("Try the model"):
         st.write("Enter the feature values to make a prediction:")
+
+        # Input fields for user to enter feature values
         duration = st.number_input("Duration of Last Contact (seconds)", min_value=0, value=0)
         pdays = st.number_input("Days Since Last Contact", min_value=-1, value=0)
         emp_var_rate = st.number_input("Employment Variation Rate", value=0.0)
         euribor3m = st.number_input("Euribor 3 Month Rate", value=0.0)
         nr_employed = st.number_input("Number of Employees", value=0.0)
-
-        # Features of data set used during training 
+        
+        # Create dictionary with user inputs
         input_data = {
             'duration': duration,
             'pdays': pdays,
             'emp.var.rate': emp_var_rate,
             'euribor3m': euribor3m,
-            'nr.employed': nr_employed,
+            'nr.employed': nr_employed
         }
-
+        
         input_df = pd.DataFrame([input_data])
-        input_features = st.text_input("Enter feature values (comma-separated):")
-        # Prediction button
-    # Function to generate random inputs
+
+        if st.button("Predict"):
+            # Make a prediction using the pipeline
+            prediction = pipeline.predict(input_df)
+            st.write("Prediction:", prediction[0])
+
+    # Function to generate random inputs (matching the number of features)
     def generate_random_inputs(numeric_features, categorical_features, num_samples=1):
+        # Generate random numeric features
         numeric_random = np.random.rand(num_samples, len(numeric_features))  # Random floats [0, 1]
+        
+        # Generate random categorical features
         categorical_random = np.random.choice(['A', 'B', 'C'], size=(num_samples, len(categorical_features)))  # Random categories
-        return numeric_random, categorical_random
-
-    # Placeholder: Replace with your actual feature names
-    numeric_features = ['age', 'income', 'score']
-    categorical_features = ['gender', 'region']
-
-    if st.button("Generate Random Input"):
-        # Generate random inputs
-        numeric_random, categorical_random = generate_random_inputs(numeric_features, categorical_features)
 
         # Combine numeric and categorical inputs into a single feature set
         random_inputs = np.hstack([numeric_random, categorical_random])
+        
+        return random_inputs
+
+    # Replace these with actual feature names from your dataset
+    numeric_features = ['duration', 'pdays', 'emp.var.rate', 'euribor3m', 'nr.employed']
+    categorical_features = ['job', 'marital', 'education', 'contact', 'month']  # Replace with actual categorical feature names
+
+    if st.button("Generate Random Input"):
+        # Generate random inputs
+        random_inputs = generate_random_inputs(numeric_features, categorical_features)
 
         # Display random inputs
         st.write("Random Inputs:")
         st.write(random_inputs)
 
-        # Predict using the pipeline
+        # Make a prediction using the pipeline
         try:
             prediction = pipeline.predict(random_inputs)
             st.write("Prediction:", prediction[0])
