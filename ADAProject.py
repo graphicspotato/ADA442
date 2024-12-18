@@ -189,7 +189,8 @@ elif page == "Model Training":
     st.write("Changing the k value of Kbest function doesn't change the generalization. It just changed the accuracy a very low rate")
     st.write("So we decided to choose these variables to re-train our model again.")
 
-    st.subheader("")
+    st.subheader("Re-training with found hyperparameters and L1 penalty")
+    st.write("So our final model had approximately %90 accuracy and we saved it.")
 
 
     
