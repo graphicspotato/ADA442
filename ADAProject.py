@@ -204,11 +204,11 @@ elif page == "Logistic Regression Prediction Model":
 
         # Features of data set used during training 
         input_data = {
-            'Duration': duration,
-            'Passed Days Since Last Contact': pdays,
-            'Employment Variation Rate': emp_var_rate,
-            'Euribor 3 Month Rate ': euribor3m,
-            'Numver of Employees': nr_employed,
+            'duration': duration,
+            'pdays': pdays,
+            'emp_var_rate': emp_var_rate,
+            'euribor3m': euribor3m,
+            'nr_employed': nr_employed,
         }
 
         input_df = pd.DataFrame([input_data])
