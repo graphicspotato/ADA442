@@ -187,7 +187,7 @@ elif page == "Model Training":
     st.write("We search the important features with KBest Anova F-test to decide which features have over or under weight which affects our model's training and it increased the accuracy slightly.")
     st.write("The algorithm found that the variables ['duration', 'pdays', 'emp.var.rate', 'euribor3m', 'nr.employed'] are the best 5 features.")
     st.write("Changing the k value of Kbest function doesn't change the generalization. It just changed the accuracy a very low rate")
-    st.write("So we decided to choose variables to re-train our model again.")
+    st.write("So we decided to choose these variables to re-train our model again.")
 
     st.subheader("")
 
