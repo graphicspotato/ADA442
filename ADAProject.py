@@ -209,6 +209,11 @@ elif page == "Logistic Regression Prediction Model":
         emp_var_rate = st.number_input("Employment Variation Rate", value=0.0)
         euribor3m = st.number_input("Euribor 3 Month Rate", value=0.0)
         nr_employed = st.number_input("Number of Employees", value=0.0)
+        poutcome = st.selectbox("Outcome of Previous Marketing Campaign", ["failure", "nonexistent", "success"])
+        cons_price_idx = st.number_input("Consumer Price Index", value=0.0)
+        age = st.number_input("Age", min_value=0, max_value=100, value=30)
+        campaign_previous_interaction = st.number_input("Campaign Previous Interaction", min_value=0, value=0)
+        cons_conf_idx = st.number_input("Consumer Confidence Index", value=0.0)
         
         # Create dictionary with user inputs
         input_data = {
@@ -217,12 +222,12 @@ elif page == "Logistic Regression Prediction Model":
             'emp.var.rate': emp_var_rate,
             'euribor3m': euribor3m,
             'nr.employed': nr_employed,
-            # # Add default values for missing columns based on training data
-            # 'previous': 0,  # Example default value for 'previous'
-            # 'cons.price.idx': 92.0,  # Example default value for 'cons.price.idx'
-            # 'age': 30,  # Example default value for 'age'
-            # 'campaign': 1,  # Example default value for 'campaign'
-            # 'cons.conf.idx': -40.0  # Example default value for 'cons.conf.idx'
+            # Add default values for missing columns based on training data
+            'poutcome': poutcome,  # Example default value for 'previous'
+            'cons.price.idx': cons_price_idx,  # Example default value for 'cons.price.idx'
+            'age': age,  # Example default value for 'age'
+            'campaign_previous_interaction': campaign_previous_interaction,  # Example default value for 'campaign'
+            'cons_conf_idx': cons_conf_idx  # Example default value for 'cons.conf.idx'
         }
         
         input_df = pd.DataFrame([input_data])
