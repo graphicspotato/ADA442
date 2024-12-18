@@ -142,43 +142,23 @@ elif page == "Data Preprocessing":
    
     st.subheader("Conversion of numerical columns")
     st.write("When working with numerical operations, it's essential that the data is in a numerical format. If a column intended to be numeric contains text or other non-numeric characters, it can cause errors or incorrect calculations.")
-    # Convert numeric columns to appropriate types
-    numeric_columns = ['age', 'duration', 'campaign', 'pdays', 'previous', 'emp.var.rate', 
-                    'cons.price.idx', 'cons.conf.idx', 'euribor3m', 'nr.employed']
-    for col in numeric_columns:
-        data[col] = pd.to_numeric(data[col], errors='coerce')  # Convert invalid values to NaN if needed
-
-    # Convert categorical columns to 'category' type
-    categorical_columns = ['job', 'marital', 'education', 'contact', 'month', 'day_of_week', 'poutcome']
-    for col in categorical_columns:
-        data[col] = data[col].astype('category')
-
 
     st.subheader("Binary Encoding")
     st.write("We have encoded binaric categories as 0 for false or 1 for true.")
-    # Create a dictionary for binary encoding
-    binary_dict = {'yes': 1, 'no': 0}
-
-    # Apply the dictionary mapping to your binary columns
-    binary_columns = ['default', 'housing', 'loan', 'y']
-    for col in binary_columns:
-        data[col] = data[col].apply(lambda x: binary_dict.get(x, x))  # using .get to handle missing values safely
-
-    # Apply the dictionary mapping to your binary columns
-    binary_dict = {'yes': 1, 'no': 0}
-    data['default'] = data['default'].map(binary_dict).fillna(0)  # Default to 0 for unknown values
-    data['housing'] = data['housing'].map(binary_dict).fillna(0)
-    data['loan'] = data['loan'].map(binary_dict).fillna(0)        
 
     st.subheader("Label Encoding")
     st.write("After that we label encoded the categorical columns into numerical ones so that they can be fitted by machine learning models which only take numerical data.")
-   
-    # List of columns to be label encoded (Ordinal Categorical)
-    label_encoded_cols = ['education']  # Add more ordinal columns if needed
-
 
     st.subheader("One-Hot Encoding For the Nominal Categorical Variables")
-    st.write("With that we eliminated ordinality between variables.")        
+    st.write("With that we eliminated ordinality between the variables.")
+
+    st.subheader("Outliers")
+    st.write("When we analyze the pairplot of variables we saw few outliers but we decided to don't remove them in order to they carry important information of sample behaviour.")
+
+    st.subheader("Scaling")
+    st.write("We have scaled our data set with by standart scaling method ")     
+    st.write("StandardScaler operates on the principle of normalization, where it transforms the distribution of each feature to have a mean of zero and a standard deviation of one.")
+    st.write("This process ensures that all features are on the same scale, preventing any single feature from dominating the learning process due to its larger magnitude.")    
 
                    # Show the processed data
     st.subheader("Processed Data")
