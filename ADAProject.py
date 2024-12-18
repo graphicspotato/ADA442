@@ -140,6 +140,20 @@ elif page == "Data Preprocessing":
     st.title("Data Preprocessing")
     st.write("On this page we will do the appropriate data preprocessing to make our model's life easier.")
     
+    # Convert numeric columns to appropriate types
+    numeric_columns = ['age', 'duration', 'campaign', 'pdays', 'previous', 'emp.var.rate', 
+                    'cons.price.idx', 'cons.conf.idx', 'euribor3m', 'nr.employed']
+    for col in numeric_columns:
+        data[col] = pd.to_numeric(data[col], errors='coerce')  # Convert invalid values to NaN if needed
+
+    # Convert categorical columns to 'category' type
+    categorical_columns = ['job', 'marital', 'education', 'contact', 'month', 'day_of_week', 'poutcome']
+    for col in categorical_columns:
+        df[col] = df[col].astype('category')
+
+    # Show the processed data
+    st.subheader("Processed Data")
+    st.dataframe(data)        
     
     # st.write("""
     #     Welcome to the 'Data Visualization' page. This page is dedicated to the Bank Marketing Data Set used in training our model. Here, you can explore the dataset and examine all the features and data within it. Furthermore, you can also explore various graphical representations of these features.
