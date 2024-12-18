@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 from streamlit_lottie import st_lottie
 import json
 import os
+import numpy as np
+
 
 current_dir = os.path.dirname(__file__)
 hello_json_path = os.path.join(current_dir, 'hello.json')
