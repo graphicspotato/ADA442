@@ -226,8 +226,8 @@ elif page == "Logistic Regression Prediction Model":
             'poutcome': poutcome,  # Example default value for 'previous'
             'cons.price.idx': cons_price_idx,  # Example default value for 'cons.price.idx'
             'age': age,  # Example default value for 'age'
-            'campaign_previous_interaction': campaign_previous_interaction,  # Example default value for 'campaign'
-            'cons_conf_idx': cons_conf_idx  # Example default value for 'cons.conf.idx'
+            'campaign.previous.interaction': campaign_previous_interaction,  # Example default value for 'campaign'
+            'cons.conf.idx': cons_conf_idx  # Example default value for 'cons.conf.idx'
         }
         
         input_df = pd.DataFrame([input_data])
