@@ -151,9 +151,23 @@ elif page == "Data Preprocessing":
     for col in categorical_columns:
         data[col] = data[col].astype('category')
 
-    # Show the processed data
+    # Create a dictionary for binary encoding
+    binary_dict = {'yes': 1, 'no': 0}
+
+    # Apply the dictionary mapping to your binary columns
+    binary_columns = ['default', 'housing', 'loan', 'y']
+    for col in binary_columns:
+        data[col] = data[col].apply(lambda x: binary_dict.get(x, x))  # using .get to handle missing values safely
+
+    # Apply the dictionary mapping to your binary columns
+    binary_dict = {'yes': 1, 'no': 0}
+    data['default'] = data['default'].map(binary_dict).fillna(0)  # Default to 0 for unknown values
+    data['housing'] = data['housing'].map(binary_dict).fillna(0)
+    data['loan'] = data['loan'].map(binary_dict).fillna(0)        
+
+        # Show the processed data
     st.subheader("Processed Data")
-    st.dataframe(data)        
+    st.dataframe(data.types)        
     
     # st.write("""
     #     Welcome to the 'Data Visualization' page. This page is dedicated to the Bank Marketing Data Set used in training our model. Here, you can explore the dataset and examine all the features and data within it. Furthermore, you can also explore various graphical representations of these features.
