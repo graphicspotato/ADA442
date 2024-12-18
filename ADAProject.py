@@ -70,7 +70,7 @@ feature_info = """
 # Upload trained model 
 # model = joblib.load(model_path)
 # data = pd.read_csv(data_path)
-
+pipeline = joblib.load('logistic_regression_pipeline.pkl')
 # Page selection using sidebar
 st.sidebar.title("Page Navigator")
 page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Preprocessing", "Model Training","Logistic Regression Prediction Model","Feedback"])
@@ -192,6 +192,10 @@ elif page == "Model Training":
     st.subheader("Re-training with found hyperparameters and L1 penalty")
     st.write("So our final model had approximately %90 accuracy and we saved it.")
 
+
+
+
+
 elif page == "Logistic Regression Prediction Model":
     st.title("Prediction")
     with st.expander("Try the model"):
@@ -212,11 +216,22 @@ elif page == "Logistic Regression Prediction Model":
         }
 
         input_df = pd.DataFrame([input_data])
-
+        input_features = st.text_input("Enter feature values (comma-separated):")
         # Prediction button
-        if st.button("Predict"):
-            prediction = model.predict(input_df)
-            st.write(f"Prediction: {'Yes' if prediction[0] == 1 else 'No'}")
+    if st.button("Predict"):
+        try:
+            # Convert input string to a list of floats
+            features = [float(x) for x in input_features.split(',')]
+            
+            # Reshape features for prediction
+            features = [features]
+            
+            # Make a prediction
+            prediction = pipeline.predict(features)
+            
+            st.write(f"Prediction: {prediction[0]}")
+        except Exception as e:
+            st.error(f"Error: {e}")
 
 if __name__ == "__main__":
     st.write("Bank Marketing Campaign Prediction")
