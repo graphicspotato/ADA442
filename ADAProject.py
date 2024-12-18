@@ -216,7 +216,13 @@ elif page == "Logistic Regression Prediction Model":
             'pdays': pdays,
             'emp.var.rate': emp_var_rate,
             'euribor3m': euribor3m,
-            'nr.employed': nr_employed
+            'nr.employed': nr_employed,
+            # Add default values for missing columns based on training data
+            'previous': 0,  # Example default value for 'previous'
+            'cons.price.idx': 92.0,  # Example default value for 'cons.price.idx'
+            'age': 30,  # Example default value for 'age'
+            'campaign': 1,  # Example default value for 'campaign'
+            'cons.conf.idx': -40.0  # Example default value for 'cons.conf.idx'
         }
         
         input_df = pd.DataFrame([input_data])
@@ -240,7 +246,7 @@ elif page == "Logistic Regression Prediction Model":
         return random_inputs
 
     # Replace these with actual feature names from your dataset
-    numeric_features = ['duration', 'pdays', 'emp.var.rate', 'euribor3m', 'nr.employed']
+    numeric_features = ['duration', 'pdays', 'emp.var.rate', 'euribor3m', 'nr.employed', 'previous', 'cons.price.idx', 'age', 'campaign', 'cons.conf.idx']
     categorical_features = ['job', 'marital', 'education', 'contact', 'month']  # Replace with actual categorical feature names
 
     if st.button("Generate Random Input"):
