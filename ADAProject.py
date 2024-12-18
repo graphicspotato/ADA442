@@ -176,13 +176,6 @@ elif page == "Data Preprocessing":
     # List of columns to be label encoded (Ordinal Categorical)
     label_encoded_cols = ['education']  # Add more ordinal columns if needed
 
-    # Create LabelEncoder instance
-    le = LabelEncoder()
-
-    # Apply LabelEncoder to each of the columns
-    for col in label_encoded_cols:
-        df[col] = le.fit_transform(df[col])
-
 
     st.subheader("One-Hot Encoding For the Nominal Categorical Variables")
     st.write("With that we eliminated ordinality between variables.")        
