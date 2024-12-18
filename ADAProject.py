@@ -218,20 +218,33 @@ elif page == "Logistic Regression Prediction Model":
         input_df = pd.DataFrame([input_data])
         input_features = st.text_input("Enter feature values (comma-separated):")
         # Prediction button
-    if st.button("Predict"):
+    # Function to generate random inputs
+    def generate_random_inputs(numeric_features, categorical_features, num_samples=1):
+        numeric_random = np.random.rand(num_samples, len(numeric_features))  # Random floats [0, 1]
+        categorical_random = np.random.choice(['A', 'B', 'C'], size=(num_samples, len(categorical_features)))  # Random categories
+        return numeric_random, categorical_random
+
+    # Placeholder: Replace with your actual feature names
+    numeric_features = ['age', 'income', 'score']
+    categorical_features = ['gender', 'region']
+
+    if st.button("Generate Random Input"):
+        # Generate random inputs
+        numeric_random, categorical_random = generate_random_inputs(numeric_features, categorical_features)
+
+        # Combine numeric and categorical inputs into a single feature set
+        random_inputs = np.hstack([numeric_random, categorical_random])
+
+        # Display random inputs
+        st.write("Random Inputs:")
+        st.write(random_inputs)
+
+        # Predict using the pipeline
         try:
-            # Convert input string to a list of floats
-            features = [float(x) for x in input_features.split(',')]
-            
-            # Reshape features for prediction
-            features = [features]
-            
-            # Make a prediction
-            prediction = pipeline.predict(features)
-            
-            st.write(f"Prediction: {prediction[0]}")
+            prediction = pipeline.predict(random_inputs)
+            st.write("Prediction:", prediction[0])
         except Exception as e:
-            st.error(f"Error: {e}")
+            st.error(f"Error during prediction: {e}")
 
 if __name__ == "__main__":
     st.write("Bank Marketing Campaign Prediction")
