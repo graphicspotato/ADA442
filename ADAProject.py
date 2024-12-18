@@ -232,37 +232,6 @@ elif page == "Logistic Regression Prediction Model":
             prediction = pipeline.predict(input_df)
             st.write("Prediction:", prediction[0])
 
-    # Function to generate random inputs (matching the number of features)
-    def generate_random_inputs(numeric_features, categorical_features, num_samples=1):
-        # Generate random numeric features
-        numeric_random = np.random.rand(num_samples, len(numeric_features))  # Random floats [0, 1]
-        
-        # Generate random categorical features
-        categorical_random = np.random.choice(['A', 'B', 'C'], size=(num_samples, len(categorical_features)))  # Random categories
-
-        # Combine numeric and categorical inputs into a single feature set
-        random_inputs = np.hstack([numeric_random, categorical_random])
-        
-        return random_inputs
-
-    # Replace these with actual feature names from your dataset
-    numeric_features = ['duration', 'pdays', 'emp.var.rate', 'euribor3m', 'nr.employed', 'previous', 'cons.price.idx', 'age', 'campaign', 'cons.conf.idx']
-    categorical_features = ['job', 'marital', 'education', 'contact', 'month']  # Replace with actual categorical feature names
-
-    if st.button("Generate Random Input"):
-        # Generate random inputs
-        random_inputs = generate_random_inputs(numeric_features, categorical_features)
-
-        # Display random inputs
-        st.write("Random Inputs:")
-        st.write(random_inputs)
-
-        # Make a prediction using the pipeline
-        try:
-            prediction = pipeline.predict(random_inputs)
-            st.write("Prediction:", prediction[0])
-        except Exception as e:
-            st.error(f"Error during prediction: {e}")
 
 if __name__ == "__main__":
     st.write("Bank Marketing Campaign Prediction")
