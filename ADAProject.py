@@ -196,19 +196,47 @@ elif page == "Logistic Regression Prediction Model":
     st.title("Prediction")
     with st.expander("Try the model"):
         st.write("Enter the feature values to make a prediction:")
+        age = st.number_input("Age", min_value=0, max_value=100, value=30)
+        job = st.selectbox("Job", ["admin.", "blue-collar", "entrepreneur", "housemaid", "management", "retired", "self-employed", "services", "student", "technician", "unemployed", "unknown"])
+        marital = st.selectbox("Marital Status", ["divorced", "married", "single", "unknown"])
+        education = st.selectbox("Education", ["basic.4y", "basic.6y", "basic.9y", "high.school", "illiterate", "professional.course", "university.degree", "unknown"])
+        default = st.selectbox("Default", ["yes", "no", "unknown"])
+        housing = st.selectbox("Housing Loan", ["yes", "no", "unknown"])
+        loan = st.selectbox("Personal Loan", ["yes", "no", "unknown"])
+        contact = st.selectbox("Contact Communication Type", ["cellular", "telephone", "unknown"])
+        month = st.selectbox("Last Contact Month", ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"])
+        day_of_week = st.selectbox("Last Contact Day of the Week", ["mon", "tue", "wed", "thu", "fri"])
         duration = st.number_input("Duration of Last Contact (seconds)", min_value=0, value=0)
         pdays = st.number_input("Days Since Last Contact", min_value=-1, value=0)
+        poutcome = st.selectbox("Outcome of Previous Marketing Campaign", ["failure", "nonexistent", "success"])
         emp_var_rate = st.number_input("Employment Variation Rate", value=0.0)
+        cons_price_idx = st.number_input("Consumer Price Index", value=0.0)
+        cons_conf_idx = st.number_input("Consumer Confidence Index", value=0.0)
         euribor3m = st.number_input("Euribor 3 Month Rate", value=0.0)
         nr_employed = st.number_input("Number of Employees", value=0.0)
-
+        campaign_previous_interaction = st.number_input("Campaign Previous Interaction", min_value=0, value=0)
+        # Features of data set used during training 
         # Features of data set used during training 
         input_data = {
-            'Duration': duration,
-            'Passed Days Since Last Contact': pdays,
-            'Employment Variation Rate': emp_var_rate,
-            'Euribor 3 Month Rate ': euribor3m,
-            'Numver of Employees': nr_employed,
+            'age': age,
+            'job': job,
+            'marital': marital,
+            'education': education,
+            'default': default,
+            'housing': housing,
+            'loan': loan,
+            'contact': contact,
+            'month': month,
+            'day_of_week': day_of_week,
+            'duration': duration,
+            'pdays': pdays,
+            'poutcome': poutcome,
+            'emp.var.rate': emp_var_rate,
+            'cons.price.idx': cons_price_idx,
+            'cons.conf.idx': cons_conf_idx,
+            'euribor3m': euribor3m,
+            'nr.employed': nr_employed,
+            'campaign_previous_interaction': campaign_previous_interaction
         }
 
         input_df = pd.DataFrame([input_data])
