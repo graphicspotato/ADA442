@@ -167,7 +167,7 @@ elif page == "Data Preprocessing":
 
         # Show the processed data
     st.subheader("Processed Data")
-    st.dataframe(data.types)        
+    st.dataframe(data.dtypes)        
     
     # st.write("""
     #     Welcome to the 'Data Visualization' page. This page is dedicated to the Bank Marketing Data Set used in training our model. Here, you can explore the dataset and examine all the features and data within it. Furthermore, you can also explore various graphical representations of these features.
