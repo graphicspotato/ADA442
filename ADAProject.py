@@ -224,14 +224,13 @@ elif page == "Logistic Regression Prediction Model":
             'emp.var.rate': emp_var_rate,
             'euribor3m': euribor3m,
             'nr.employed': nr_employed,
-            # Add default values for missing columns based on training data
-            'poutcome': poutcome,  # Example default value for 'previous'
-            'cons.price.idx': cons_price_idx,  # Example default value for 'cons.price.idx'
-            'age': age,  # Example default value for 'age'
-            'campaign.previous.interaction': campaign_previous_interaction,  # Example default value for 'campaign'
+            'poutcome': poutcome,  
+            'cons.price.idx': cons_price_idx,
+            'age': age,
+            'campaign.previous.interaction': campaign_previous_interaction,
             'cons.conf.idx': cons_conf_idx,
             'previous' : previous,
-            'campaign' : campaign    # Example default value for 'cons.conf.idx'
+            'campaign' : campaign
         }
         
         input_df = pd.DataFrame([input_data])
