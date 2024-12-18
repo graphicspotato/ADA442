@@ -139,14 +139,9 @@ elif page == "Data Visualization":
 elif page == "Data Preprocessing":
     st.title("Data Preprocessing")
     st.write("On this page we will do the appropriate data preprocessing to make our model's life easier.")
+   
     st.subheader("Conversion of numerical columns")
     st.write("When working with numerical operations, it's essential that the data is in a numerical format. If a column intended to be numeric contains text or other non-numeric characters, it can cause errors or incorrect calculations.")
-    st.subheader("Binary Encoding")
-    st.write("We encode binaric categories as 0 for not or 1 for true.")
-
-            # Show the processed data
-    st.subheader("Processed Data")
-    st.dataframe(data.dtypes)     
     # Convert numeric columns to appropriate types
     numeric_columns = ['age', 'duration', 'campaign', 'pdays', 'previous', 'emp.var.rate', 
                     'cons.price.idx', 'cons.conf.idx', 'euribor3m', 'nr.employed']
@@ -158,6 +153,9 @@ elif page == "Data Preprocessing":
     for col in categorical_columns:
         data[col] = data[col].astype('category')
 
+
+    st.subheader("Binary Encoding")
+    st.write("We have encoded binaric categories as 0 for false or 1 for true.")
     # Create a dictionary for binary encoding
     binary_dict = {'yes': 1, 'no': 0}
 
@@ -172,7 +170,27 @@ elif page == "Data Preprocessing":
     data['housing'] = data['housing'].map(binary_dict).fillna(0)
     data['loan'] = data['loan'].map(binary_dict).fillna(0)        
 
+    st.subheader("Label Encoding")
+    st.write("After that we label encoded the categorical columns into numerical ones so that they can be fitted by machine learning models which only take numerical data.")
    
+    # List of columns to be label encoded (Ordinal Categorical)
+    label_encoded_cols = ['education']  # Add more ordinal columns if needed
+
+    # Create LabelEncoder instance
+    le = LabelEncoder()
+
+    # Apply LabelEncoder to each of the columns
+    for col in label_encoded_cols:
+        df[col] = le.fit_transform(df[col])
+
+
+    st.subheader("One-Hot Encoding For the Nominal Categorical Variables")
+    st.write("With that we eliminated ordinality between variables.")        
+
+                   # Show the processed data
+    st.subheader("Processed Data")
+    st.dataframe(data.dtypes)
+    st.write(data.head())
     
     # st.write("""
     #     Welcome to the 'Data Visualization' page. This page is dedicated to the Bank Marketing Data Set used in training our model. Here, you can explore the dataset and examine all the features and data within it. Furthermore, you can also explore various graphical representations of these features.
