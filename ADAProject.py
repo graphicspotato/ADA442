@@ -206,9 +206,9 @@ elif page == "Logistic Regression Prediction Model":
         input_data = {
             'duration': duration,
             'pdays': pdays,
-            'emp_var_rate': emp_var_rate,
+            'emp.var.rate': emp_var_rate,
             'euribor3m': euribor3m,
-            'nr_employed': nr_employed,
+            'nr.employed': nr_employed,
         }
 
         input_df = pd.DataFrame([input_data])
