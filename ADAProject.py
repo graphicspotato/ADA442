@@ -73,7 +73,7 @@ feature_info = """
 
 # Page selection using sidebar
 st.sidebar.title("Page Navigator")
-page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Preprocessing", "Machine Learning Prediction Model","Feedback"])
+page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Preprocessing", "Model Training","Machine Learning Prediction Model","Feedback"])
 
 if page == "Home":
    st.title("Welcome to the Bank Marketing Campaign Prediction App")
@@ -160,10 +160,36 @@ elif page == "Data Preprocessing":
     st.write("StandardScaler operates on the principle of normalization, where it transforms the distribution of each feature to have a mean of zero and a standard deviation of one.")
     st.write("This process ensures that all features are on the same scale, preventing any single feature from dominating the learning process due to its larger magnitude.")    
 
-                   # Show the processed data
+    # Show the processed data
     st.subheader("Processed Data")
     st.dataframe(data.dtypes)
     st.write(data.head())
+elif page == "Model Training":
+    st.title("Model Training")
+    st.write("Our data is ready to serve our ML model. Let's move on to model training phase")
+
+    st.subheader("Data Splitting")
+    st.write("In order to prevent over fitting we split the data as training and test data by 8/2 ratio")
+
+    st.subheadear("Plain Models")
+    st.write("First we tested how good plain machine learning models.")
+    st.write("Logistic regression model achieved %92 accuracy.")
+    st.write("Random forest model achieved %90 accuracy.")
+    st.write("SVM model achieved %91 accuracy.")
+
+    st.write("From this point we decided to move on with Logistic regression model")
+
+    st.subheader("Feature Eliminating")
+    st.write("We search the important features to decide which features have over or under weight which affects our model's training")
+
+    # Get feature importance
+    importance = pd.DataFrame({'Feature': X.columns, 'Coefficient': model.coef_[0]})
+    importance = importance.sort_values(by='Coefficient', ascending=False)
+
+    print("\nFeature Importance:")
+    print(importance)
+
+
     
     # st.write("""
     #     Welcome to the 'Data Visualization' page. This page is dedicated to the Bank Marketing Data Set used in training our model. Here, you can explore the dataset and examine all the features and data within it. Furthermore, you can also explore various graphical representations of these features.
