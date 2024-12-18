@@ -214,6 +214,8 @@ elif page == "Logistic Regression Prediction Model":
         age = st.number_input("Age", min_value=0, max_value=100, value=30)
         campaign_previous_interaction = st.number_input("Campaign Previous Interaction", min_value=0, value=0)
         cons_conf_idx = st.number_input("Consumer Confidence Index", value=0.0)
+        previous = st.number_input("number of contacts performed before this campaign and for this client", min_value = 0, value = 0)
+        campaign = st.number_input("number of contacts performed during this campaign and for this client", min_value= 0, value = 0)
         
         # Create dictionary with user inputs
         input_data = {
@@ -227,7 +229,9 @@ elif page == "Logistic Regression Prediction Model":
             'cons.price.idx': cons_price_idx,  # Example default value for 'cons.price.idx'
             'age': age,  # Example default value for 'age'
             'campaign.previous.interaction': campaign_previous_interaction,  # Example default value for 'campaign'
-            'cons.conf.idx': cons_conf_idx  # Example default value for 'cons.conf.idx'
+            'cons.conf.idx': cons_conf_idx,
+            'previous' : previous,
+            'campaign' : campaign    # Example default value for 'cons.conf.idx'
         }
         
         input_df = pd.DataFrame([input_data])
