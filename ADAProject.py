@@ -193,6 +193,40 @@ elif page == "Model Training":
     st.subheader("Re-training with found hyperparameters and L1 penalty")
     st.write("So our final model had approximately %90 accuracy and we saved it.")
 
+    st.subheader("Pipelining")
+    st.write("We've created a pipeline in the following way")
+    code = '''# Identify numeric and categorical features
+    numeric_features = X.select_dtypes(include=['int64', 'float64']).columns
+    categorical_features = X.select_dtypes(include=['object']).columns
+
+    # Conversion steps for numerical and categorical features
+    numeric_transformer = Pipeline(steps=[
+        ('imputer', SimpleImputer(strategy='median')),
+        ('scaler', StandardScaler())
+    ])
+
+    categorical_transformer = Pipeline(steps=[
+        ('imputer', SimpleImputer(strategy='most_frequent')),
+        ('onehot', OneHotEncoder(handle_unknown='ignore'))
+    ])
+
+    # Combining numeric and categorical transformations using ColumnTransformer
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ('num', numeric_transformer, numeric_features),
+            ('cat', categorical_transformer, categorical_features)
+        ]
+    )
+    pipeline = {
+        'Logistic Regression': ImbPipeline(steps=[
+            ('preprocessor', preprocessor),
+            ('smote', SMOTE(random_state=42)),
+            ('selector', SelectKBest(score_func=f_classif, k=5)),
+            ('classifier', LogisticRegression(random_state=42))
+        ])
+    }'''
+    st.code(code, language="python")
+
 elif page == "Logistic Regression Prediction Model":
     st.title("Prediction")
     st.write("Now our model is ready to predict possible outcomes!")
