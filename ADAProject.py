@@ -200,7 +200,7 @@ elif page == "Model Training":
 
     st.subheader("Pipelining")
     st.write("We've created a pipeline as following;")
-    col1, col2 = st.columns([2,1])
+    col1, col2 = st.columns([3,1])
     with col1:
         code = '''# Identify numeric and categorical features
         numeric_features = X.select_dtypes(include=['int64', 'float64']).columns
