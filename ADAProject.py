@@ -79,16 +79,13 @@ st.sidebar.title("Page Navigator")
 page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Preprocessing", "Model Training","Logistic Regression Prediction Model","Feedback"])
 
 if page == "Home":
-   st.title("Welcome to the Bank Marketing Campaign Prediction App")
+   st.title("Bank Marketing Campaign Prediction App")
    col1, col2 = st.columns(2)
    with col1:
-    st.write("""
-            This application allows you to predict the success of a bank marketing campaign 
-            based on various features. Use the sidebar to navigate to the prediction page 
-            and input the required features to get a prediction.
-        """)
+    st.write("This app created for a marketing campaigns (phone calls) of a Portuguese banking institution. The classification goal is to predict if the client will subscribe a term deposit (variable y).")
+    st.write("You can navigate between pages using the sidebar, you can follow the process of model training.")
     with col2:
-        st_lottie(lottie_animation_hello, height=300, key="coding")
+        st_lottie(lottie_animation_machine, height=300, key="coding")
 
 elif page == "Data Exploration":
     st.title("Let's Explore Our Dataset")
@@ -139,6 +136,7 @@ elif page == "Data Visualization":
     corr = numerical_data.corr()
     sns.heatmap(corr, annot=True, cmap='coolwarm', ax=ax)
     st.pyplot(fig)
+
 elif page == "Data Preprocessing":
     st.title("Data Preprocessing")
     st.write("On this page we will do the appropriate data preprocessing to make our model's life easier.")
@@ -167,6 +165,7 @@ elif page == "Data Preprocessing":
     st.subheader("Processed Data")
     st.dataframe(data.dtypes)
     st.write(data.head())
+
 elif page == "Model Training":
     st.title("Model Training")
     st.write("Our data is ready to serve our ML model. Let's move on to model training phase")
@@ -194,10 +193,6 @@ elif page == "Model Training":
 
     st.subheader("Re-training with found hyperparameters and L1 penalty")
     st.write("So our final model had approximately %90 accuracy and we saved it.")
-
-
-
-
 
 elif page == "Logistic Regression Prediction Model":
     st.title("Prediction")
@@ -238,62 +233,9 @@ elif page == "Logistic Regression Prediction Model":
 
         if st.button("Predict"):
             # Make a prediction using the pipeline
-            # prediction = pipeline.predict(input_df)
             prediction = pipeline.predict(input_df)
             st.write("Prediction:", prediction[0])
 
 
 if __name__ == "__main__":
     st.write("Bank Marketing Campaign Prediction")
-
-    
-    # st.write("""
-    #     Welcome to the 'Data Visualization' page. This page is dedicated to the Bank Marketing Data Set used in training our model. Here, you can explore the dataset and examine all the features and data within it. Furthermore, you can also explore various graphical representations of these features.
-    # """)
-    # num_rows = st.number_input("Select number of rows to view", min_value=5, max_value=50, value=10)
-    #  # Show the first few rows of the data set
-    # st.write(f"Here is a preview of the first {num_rows} rows of the dataset:")
-    # st.write(data.head(num_rows))
-    # st.write(feature_info)
-
-    # # Data Visualization part for our dataset
-    # st.write("### Distribution of Age")
-    # fig, ax = plt.subplots()
-    # sns.histplot(data['age'], bins=30, kde=True, ax=ax)
-    # st.pyplot(fig)
-
-    # st.write("### Job Distribution")
-    # fig, ax = plt.subplots()
-    # sns.countplot(data['job'], ax=ax)
-    # plt.xticks(rotation=45)
-    # st.pyplot(fig)
-
-    # st.write("### Marital Status Distribution")
-    # fig, ax = plt.subplots()
-    # sns.countplot(data['marital'], ax=ax)
-    # st.pyplot(fig)
-
-    # st.write("### Education Level Distribution")
-    # fig, ax = plt.subplots()
-    # sns.countplot(data['education'], ax=ax)
-    # plt.xticks(rotation=45)
-    # st.pyplot(fig)
-
-    # st.write("### Correlation Heatmap")
-    # fig, ax = plt.subplots(figsize=(12, 8))  
-    # numerical_data = data.select_dtypes(include=['float64', 'int64']) 
-    # corr = numerical_data.corr()
-    # sns.heatmap(corr, annot=True, cmap='coolwarm', ax=ax)
-    # st.pyplot(fig)
-
-    # st.write("### Duration vs Age")
-    # fig, ax = plt.subplots()
-    # sns.scatterplot(data=data, x='age', y='duration', ax=ax)
-    # st.pyplot(fig)
-
-    # st.write("### Box Plot of Campaign Outcome by Job Type")
-    # fig, ax = plt.subplots()
-    # sns.boxplot(data=data, x='job', y='duration', ax=ax)
-    # plt.xticks(rotation=45)
-    # st.pyplot(fig)
-    
