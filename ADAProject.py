@@ -239,10 +239,7 @@ elif page == "Model Training":
 elif page == "Logistic Regression Prediction Model":
     st.title("Prediction")
     st.write("Now our model is ready to predict possible outcomes!")
-    st.write("Try giving it some variables from below and see what you got.")
-
-    st.write("Enter the feature values to make a prediction:")
-
+    st.subheader("Try giving it some variables from below and see what you got.")
     # Input fields for user to enter feature values
     duration = st.number_input("Duration of Last Contact (seconds)", min_value=0, value=0)
     pdays = st.number_input("Days Since Last Contact", min_value=-1, value=0)
