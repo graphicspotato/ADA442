@@ -239,7 +239,7 @@ elif page == "Logistic Regression Prediction Model":
         if st.button("Predict"):
             # Make a prediction using the pipeline
             # prediction = pipeline.predict(input_df)
-            prediction = pipelineRF.predict(input_df)
+            prediction = pipeline.predict(input_df)
             st.write("Prediction:", prediction[0])
 
 
