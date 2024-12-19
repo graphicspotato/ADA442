@@ -87,17 +87,18 @@ if page == "Home":
    st.title("Bank Marketing Campaign Prediction App")
    col1, col2 = st.columns(2)
    with col1:
-    st.write("This app created for a marketing campaigns (phone calls) of a Portuguese banking institution. The classification goal is to predict if the client will subscribe a term deposit (variable y).")
+    st.subheader("Welcome!")
+    st.write("This app showcases the process of a machine learning model which predicts of outcomes of marketing campaign of via phone calls of a Portuguese bank institution.")
     st.write("You can navigate between pages using the sidebar and follow the process of model training.")
     with col2:
         st_lottie(lottie_animation_machine, height=300, key="coding")
 
 elif page == "Data Exploration":
     st.title("Let's Explore Our Dataset")
-    st.write("The data is related with direct marketing campaigns (phone calls) of a Portuguese banking institution. The classification goal is to predict if the client will subscribe a term deposit (variable y).")
+    st.write("The data is related with direct marketing campaigns (phone calls) of a Portuguese banking institution. The classification goal is to predict if the client will subscribe a term deposit")
     st.write("Additional Information:")
     st.write(" The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.")
-    st.write("There are four datasets which can be used but our work based on bank-additional.csv with 10% of the examples (4119), randomly selected from 1), and 20 inputs.")
+    st.write("There are four datasets which can be used but our work based on bank-additional.csv with 10% of the examples (4119), randomly selected from 1, and 20 inputs.")
     st.write("Luckily We don't have any missing values in our dataset so it seems there is no need to data imputation.")
     
 elif page == "Data Visualization":
