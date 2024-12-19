@@ -200,41 +200,42 @@ elif page == "Model Training":
 
     st.subheader("Pipelining")
     st.write("We've created a pipeline as following;")
-    col1, col2 = st.columns([3,1])
+    
+    code = '''# Identify numeric and categorical features
+    numeric_features = X.select_dtypes(include=['int64', 'float64']).columns
+    categorical_features = X.select_dtypes(include=['object']).columns
+
+    # Conversion steps for numerical and categorical features
+    numeric_transformer = Pipeline(steps=[
+        ('imputer', SimpleImputer(strategy='median')),
+        ('scaler', StandardScaler())
+    ])
+
+    categorical_transformer = Pipeline(steps=[
+        ('imputer', SimpleImputer(strategy='most_frequent')),
+        ('onehot', OneHotEncoder(handle_unknown='ignore'))
+    ])
+
+    # Combining numeric and categorical transformations using ColumnTransformer
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ('num', numeric_transformer, numeric_features),
+            ('cat', categorical_transformer, categorical_features)
+        ]
+    )
+    pipeline = {
+        'Logistic Regression': ImbPipeline(steps=[
+            ('preprocessor', preprocessor),
+            ('smote', SMOTE(random_state=42)),
+            ('selector', SelectKBest(score_func=f_classif, k=5)),
+            ('classifier', LogisticRegression(random_state=42))
+        ])
+    }'''
+    st.code(code, language="python")
+    col1, col2 = st.columns([2])
     with col1:
-        code = '''# Identify numeric and categorical features
-        numeric_features = X.select_dtypes(include=['int64', 'float64']).columns
-        categorical_features = X.select_dtypes(include=['object']).columns
-
-        # Conversion steps for numerical and categorical features
-        numeric_transformer = Pipeline(steps=[
-            ('imputer', SimpleImputer(strategy='median')),
-            ('scaler', StandardScaler())
-        ])
-
-        categorical_transformer = Pipeline(steps=[
-            ('imputer', SimpleImputer(strategy='most_frequent')),
-            ('onehot', OneHotEncoder(handle_unknown='ignore'))
-        ])
-
-        # Combining numeric and categorical transformations using ColumnTransformer
-        preprocessor = ColumnTransformer(
-            transformers=[
-                ('num', numeric_transformer, numeric_features),
-                ('cat', categorical_transformer, categorical_features)
-            ]
-        )
-        pipeline = {
-            'Logistic Regression': ImbPipeline(steps=[
-                ('preprocessor', preprocessor),
-                ('smote', SMOTE(random_state=42)),
-                ('selector', SelectKBest(score_func=f_classif, k=5)),
-                ('classifier', LogisticRegression(random_state=42))
-            ])
-        }'''
-        st.code(code, language="python")
+        st.write("But this pipeline cost us %5 loss of accuracy.")
         with col2:
-            st.write("But this pipeline cost us %5 loss of accuracy.")
             st_lottie(lottie_confused_animation, height=300, key="coding")
 
 elif page == "Logistic Regression Prediction Model":
