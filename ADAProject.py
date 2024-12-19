@@ -76,7 +76,7 @@ pipeline = joblib.load('logistic_regression_pipeline.pkl')
 # pipelineRF = joblib.load('random_forest_pipeline.pkl')
 # Page selection using sidebar
 st.sidebar.title("Page Navigator")
-page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Preprocessing", "Model Training","Logistic Regression Prediction Model","Feedback"])
+page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Preprocessing", "Model Training","Logistic Regression Prediction Model"])
 
 if page == "Home":
    st.title("Bank Marketing Campaign Prediction App")
@@ -98,9 +98,9 @@ elif page == "Data Exploration":
 elif page == "Data Visualization":
     st.title("Data Visualization")
     st.write("In this page you can visualise the general information of our dataset.")
-    num_rows = st.number_input("Select number of rows to view", min_value=5, max_value=50, value=10)
+    num_rows = st.number_input("Select number of rows to view", value=10)
      # Show the first few rows of the data set
-    st.write(f"Here is a preview of the first {num_rows} rows of the dataset:")
+    st.write("Here is a preview of the first 10 rows of the dataset:")
     st.write(data.head(num_rows))
     st.write(feature_info)
     st.subheader("Null Values in Each Column")
