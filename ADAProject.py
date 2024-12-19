@@ -98,7 +98,6 @@ elif page == "Data Exploration":
 elif page == "Data Visualization":
     st.title("Data Visualization")
     st.write("In this page you can visualise the general information of our dataset.")
-    num_rows = st.number_input("Select number of rows to view", value=10)
      # Show the first few rows of the data set
     st.write("Here is a preview of the first 10 rows of the dataset:")
     st.write(data.head(num_rows))
