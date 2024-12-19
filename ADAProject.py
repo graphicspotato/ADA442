@@ -197,8 +197,8 @@ elif page == "Model Training":
 elif page == "Logistic Regression Prediction Model":
     st.title("Prediction")
     st.write("Now our model is ready to predict possible outcomes!")
-    st.write("Try giving it some variables below and see what you get.")
-    
+    st.write("Try giving it some variables from below and see what you got.")
+
     with st.expander("Try the model"):
         st.write("Enter the feature values to make a prediction:")
 
