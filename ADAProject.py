@@ -241,42 +241,41 @@ elif page == "Logistic Regression Prediction Model":
     st.write("Now our model is ready to predict possible outcomes!")
     st.write("Try giving it some variables from below and see what you got.")
 
-    with st.expander("Try the model"):
-        st.write("Enter the feature values to make a prediction:")
+    st.write("Enter the feature values to make a prediction:")
 
-        # Input fields for user to enter feature values
-        duration = st.number_input("Duration of Last Contact (seconds)", min_value=0, value=0)
-        pdays = st.number_input("Days Since Last Contact", min_value=-1, value=0)
-        emp_var_rate = st.number_input("Employment Variation Rate", value=0.0)
-        euribor3m = st.number_input("Euribor 3 Month Rate", value=0.0)
-        nr_employed = st.number_input("Number of Employees", value=0.0)
-        poutcome = st.selectbox("Outcome of Previous Marketing Campaign", ["failure", "nonexistent", "success"])
-        cons_price_idx = st.number_input("Consumer Price Index", value=0.0)
-        age = st.number_input("Age", min_value=0, max_value=100, value=30)
-        campaign_previous_interaction = st.number_input("Campaign Previous Interaction", min_value=0, value=0)
-        cons_conf_idx = st.number_input("Consumer Confidence Index", value=0.0)
-        previous = st.number_input("number of contacts performed before this campaign and for this client", min_value = 0, value = 0)
-        campaign = st.number_input("number of contacts performed during this campaign and for this client", min_value= 0, value = 0)
-        
-        # Create dictionary with user inputs
-        input_data = {
-            'duration': duration,
-            'pdays': pdays,
-            'emp.var.rate': emp_var_rate,
-            'euribor3m': euribor3m,
-            'nr.employed': nr_employed,
-            'poutcome': poutcome,  
-            'cons.price.idx': cons_price_idx,
-            'age': age,
-            'campaign.previous.interaction': campaign_previous_interaction,
-            'cons.conf.idx': cons_conf_idx,
-            'previous' : previous,
-            'campaign' : campaign
-        }
-        
-        input_df = pd.DataFrame([input_data])
+    # Input fields for user to enter feature values
+    duration = st.number_input("Duration of Last Contact (seconds)", min_value=0, value=0)
+    pdays = st.number_input("Days Since Last Contact", min_value=-1, value=0)
+    emp_var_rate = st.number_input("Employment Variation Rate", value=0.0)
+    euribor3m = st.number_input("Euribor 3 Month Rate", value=0.0)
+    nr_employed = st.number_input("Number of Employees", value=0.0)
+    poutcome = st.selectbox("Outcome of Previous Marketing Campaign", ["failure", "nonexistent", "success"])
+    cons_price_idx = st.number_input("Consumer Price Index", value=0.0)
+    age = st.number_input("Age", min_value=0, max_value=100, value=30)
+    campaign_previous_interaction = st.number_input("Campaign Previous Interaction", min_value=0, value=0)
+    cons_conf_idx = st.number_input("Consumer Confidence Index", value=0.0)
+    previous = st.number_input("number of contacts performed before this campaign and for this client", min_value = 0, value = 0)
+    campaign = st.number_input("number of contacts performed during this campaign and for this client", min_value= 0, value = 0)
+    
+    # Create dictionary with user inputs
+    input_data = {
+        'duration': duration,
+        'pdays': pdays,
+        'emp.var.rate': emp_var_rate,
+        'euribor3m': euribor3m,
+        'nr.employed': nr_employed,
+        'poutcome': poutcome,  
+        'cons.price.idx': cons_price_idx,
+        'age': age,
+        'campaign.previous.interaction': campaign_previous_interaction,
+        'cons.conf.idx': cons_conf_idx,
+        'previous' : previous,
+        'campaign' : campaign
+    }
+    
+    input_df = pd.DataFrame([input_data])
 
-        if st.button("Predict"):
-            # Make a prediction using the pipeline
-            prediction = pipeline.predict(input_df)
-            st.write("Prediction:", prediction[0])
+    if st.button("Predict"):
+        # Make a prediction using the pipeline
+        prediction = pipeline.predict(input_df)
+        st.write("Prediction:", prediction[0])
