@@ -100,7 +100,6 @@ elif page == "Data Visualization":
     st.write("In this page you can visualise the general information of our dataset.")
      # Show the first few rows of the data set
     st.write("Here is a preview of the first 10 rows of the dataset:")
-    st.write(data.head(num_rows))
     st.write(feature_info)
     st.subheader("Null Values in Each Column")
     null_values = data.isnull().sum()
