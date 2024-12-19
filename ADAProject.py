@@ -232,11 +232,9 @@ elif page == "Model Training":
         ])
     }'''
     st.code(code, language="python")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.write("But this pipeline cost us %5 loss of accuracy.")
-        with col2:
-            st_lottie(lottie_confused_animation, height=300, key="coding")
+
+    st.write("But this pipeline cost us %5 loss of accuracy.")
+    st_lottie(lottie_confused_animation, height=300, width = 600, key="coding")
 
 elif page == "Logistic Regression Prediction Model":
     st.title("Prediction")
