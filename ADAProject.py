@@ -35,8 +35,11 @@ def load_animation_m():
     return load_lottie_file(machine_json_path)
 
 @st.cache_data()
-def load_animation_c():
+def load_animation_h():
     return load_lottie_file(hello_json_path)
+@st.cache_data()
+def load_animation_c():
+    return load_lottie_file(confused_json_path)
 
 # Load animations, model and data
 lottie_animation_hello = load_animation_h()
