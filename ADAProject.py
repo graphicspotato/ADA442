@@ -232,7 +232,7 @@ elif page == "Model Training":
         ])
     }'''
     st.code(code, language="python")
-    col1, col2 = st.columns([2])
+    col1, col2 = st.columns(2)
     with col1:
         st.write("But this pipeline cost us %5 loss of accuracy.")
         with col2:
