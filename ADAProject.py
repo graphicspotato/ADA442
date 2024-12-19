@@ -73,7 +73,7 @@ feature_info = """
 # model = joblib.load(model_path)
 # data = pd.read_csv(data_path)
 pipeline = joblib.load('logistic_regression_pipeline.pkl')
-pipelineRF = joblib.load('random_forest_pipeline.pkl')
+# pipelineRF = joblib.load('random_forest_pipeline.pkl')
 # Page selection using sidebar
 st.sidebar.title("Page Navigator")
 page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Preprocessing", "Model Training","Logistic Regression Prediction Model","Feedback"])
