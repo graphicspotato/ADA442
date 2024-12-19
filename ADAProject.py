@@ -83,7 +83,7 @@ if page == "Home":
    col1, col2 = st.columns(2)
    with col1:
     st.write("This app created for a marketing campaigns (phone calls) of a Portuguese banking institution. The classification goal is to predict if the client will subscribe a term deposit (variable y).")
-    st.write("You can navigate between pages using the sidebar, you can follow the process of model training.")
+    st.write("You can navigate between pages using the sidebar and follow the process of model training.")
     with col2:
         st_lottie(lottie_animation_machine, height=300, key="coding")
 
@@ -235,7 +235,3 @@ elif page == "Logistic Regression Prediction Model":
             # Make a prediction using the pipeline
             prediction = pipeline.predict(input_df)
             st.write("Prediction:", prediction[0])
-
-
-if __name__ == "__main__":
-    st.write("Bank Marketing Campaign Prediction")
