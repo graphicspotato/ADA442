@@ -12,6 +12,7 @@ import numpy as np
 current_dir = os.path.dirname(__file__)
 hello_json_path = os.path.join(current_dir, 'hello.json')
 machine_json_path = os.path.join(current_dir, 'machine.json')
+confused_json_path = os.path.join(current_dir, 'confused.json')
 model_path = os.path.join(current_dir, 'LOGREG_model.pkl')
 data_path = os.path.join(current_dir, 'bank-additional.csv')
 
@@ -34,12 +35,13 @@ def load_animation_m():
     return load_lottie_file(machine_json_path)
 
 @st.cache_data()
-def load_animation_h():
+def load_animation_c():
     return load_lottie_file(hello_json_path)
 
 # Load animations, model and data
 lottie_animation_hello = load_animation_h()
 lottie_animation_machine = load_animation_m()
+lottie_confused_animation = load_animation_c()
 model = load_model()
 data = load_data()
 
@@ -194,7 +196,7 @@ elif page == "Model Training":
     st.write("So our final model had approximately %90 accuracy and we saved it.")
 
     st.subheader("Pipelining")
-    st.write("We've created a pipeline in the following way")
+    st.write("We've created a pipeline as following;")
     code = '''# Identify numeric and categorical features
     numeric_features = X.select_dtypes(include=['int64', 'float64']).columns
     categorical_features = X.select_dtypes(include=['object']).columns
@@ -226,6 +228,8 @@ elif page == "Model Training":
         ])
     }'''
     st.code(code, language="python")
+    st.write("But this pipeline cost us %5 loss of accuracy.")
+    st_lottie(lottie_confused_animation, height=300, key="coding")
 
 elif page == "Logistic Regression Prediction Model":
     st.title("Prediction")
