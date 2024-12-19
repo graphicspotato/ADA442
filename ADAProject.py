@@ -200,7 +200,7 @@ elif page == "Model Training":
 
     st.subheader("Pipelining")
     st.write("We've created a pipeline as following;")
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns([2,1])
     with col1:
         code = '''# Identify numeric and categorical features
         numeric_features = X.select_dtypes(include=['int64', 'float64']).columns
@@ -235,7 +235,7 @@ elif page == "Model Training":
         st.code(code, language="python")
         with col2:
             st.write("But this pipeline cost us %5 loss of accuracy.")
-            st_lottie(lottie_confused_animation, height=150, key="coding")
+            st_lottie(lottie_confused_animation, height=300, key="coding")
 
 elif page == "Logistic Regression Prediction Model":
     st.title("Prediction")
