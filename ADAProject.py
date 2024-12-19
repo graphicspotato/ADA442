@@ -272,7 +272,7 @@ elif page == "Logistic Regression Prediction Model":
     
     input_df = pd.DataFrame([input_data])
 
-    if st.button("Predict"):
+    if st.button("Fingers Crossed..."):
         # Make a prediction using the pipeline
         prediction = pipeline.predict(input_df)
         st.write("Prediction:", prediction[0])
