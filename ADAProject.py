@@ -73,7 +73,7 @@ feature_info = """
 # model = joblib.load(model_path)
 # data = pd.read_csv(data_path)
 pipeline = joblib.load('logistic_regression_pipeline.pkl')
-pipelineGD = joblib.load('gradient_boosting_pipeline.pkl')
+pipelineRF = joblib.load('random_forest_pipeline.pkl')
 # Page selection using sidebar
 st.sidebar.title("Page Navigator")
 page = st.sidebar.selectbox("Choose a page", ["Home", "Data Exploration","Data Visualization", "Data Preprocessing", "Model Training","Logistic Regression Prediction Model","Feedback"])
@@ -239,7 +239,7 @@ elif page == "Logistic Regression Prediction Model":
         if st.button("Predict"):
             # Make a prediction using the pipeline
             # prediction = pipeline.predict(input_df)
-            prediction = pipelineGD.predict(input_df)
+            prediction = pipelineRF.predict(input_df)
             st.write("Prediction:", prediction[0])
 
 
